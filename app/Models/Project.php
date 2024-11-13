@@ -9,7 +9,8 @@ class Project extends Model
 {
     protected $fillable =[
         'name',
-        'value'
+        'value',
+        'client_id'
     ];
 
     public function clients(): HasOne   

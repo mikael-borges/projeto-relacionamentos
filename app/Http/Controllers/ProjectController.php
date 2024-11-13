@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class ProjectController extends Controller
 
 public function criar()
 {
-    return view('projects.create');
+    $clients = Client::all();
+    return view('projects.create', compact('clients'));
 }
 
 public function salvar(Request $request)
@@ -26,15 +28,16 @@ public function salvar(Request $request)
 
 public function editar($id)
 {
-    $projects = Project::findOrFail($id);
-    return view('projects.edit', compact('projects'));
+    $project = Project::findOrFail($id);
+    $clients = Client::all();
+    return view('projects.edit', compact('project', 'clients'));
 }
 
 public function atualizar(Request $request, $id)
 {
-    $projects = Project::findOrFail($id);
-    $projects->update($request->all());
-    return redirect('projects')->with('success', 'Product updated successfully.');
+    $project = Project::findOrFail($id);
+    $project->update($request->all());
+    return redirect('projects')->with('success', 'Projeto atualizado com sucesso.');
 }
 
 public function deletar($id)

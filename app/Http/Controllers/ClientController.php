@@ -9,38 +9,38 @@ class ClientController extends Controller
 {
     public function listar()
 {
-    $clientes = Client::all();
-    return view('clientes.index', compact('clientes'));
+    $clients = Client::all();
+    return view('clients.index', compact('clients'));
 }
 
 public function criar()
 {
-    return view('clientes.create');
+    return view('clients.create');
 }
 
 public function salvar(Request $request)
 {
     Client::create($request->all());
-    return redirect('clientes')->with('success', 'Product created successfully.');
+    return redirect('clients')->with('success', 'Cliente cadastrado com sucesso.');
 }
 
-public function edit($id)
+public function editar($id)
 {
-    $clientes = Client::findOrFail($id);
-    return view('clientes.edit', compact('clientes'));
+    $client = Client::findOrFail($id);
+    return view('clients.edit', compact('client'));
 }
 
 public function atualizar(Request $request, $id)
 {
-    $clientes = Client::findOrFail($id);
-    $clientes->update($request->all());
-    return redirect('clientes')->with('success', 'Product updated successfully.');
+    $client = Client::findOrFail($id);
+    $client->update($request->all());
+    return redirect('clients')->with('success', 'Cliente atualizado com sucesso.');
 }
 
 public function deletar($id)
 {
-    $clientes = Client::findOrFail($id);
-    $clientes->delete();
-    return redirect('clientes')->with('success', 'Product deleted successfully.');
+    $clients = Client::findOrFail($id);
+    $clients->delete();
+    return redirect('clients')->with('success', 'Cliente deletado com sucesso.');
 }
 }

@@ -22,15 +22,15 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('projects', [ProjectController::class, 'listar']);
-Route::get('projects/criar', [ProjectController::class, 'criar']);
+Route::get('projects/create', [ProjectController::class, 'criar']);
 Route::post('projects', [ProjectController::class, 'salvar']);
-Route::get('projects/{id}/editar', [ProjectController::class, 'editar']);
+Route::get('projects/{id}/edit', [ProjectController::class, 'editar']);
 Route::put('projects/{id}', [ProjectController::class, 'atualizar']);
 Route::delete('projects/{id}', [ProjectController::class, 'deletar']);
 
 Route::get('clients', [ClientController::class, 'listar']);
-Route::get('clients/criar', [ClientController::class, 'criar']);
+Route::get('clients/create', [ClientController::class, 'criar']);
 Route::post('clients', [ClientController::class, 'salvar']);
-Route::get('clients/{id}/editar', [ClientController::class, 'editar']);
+Route::get('clients/{id}/edit', [ClientController::class, 'editar']);
 Route::put('clients/{id}', [ClientController::class, 'atualizar']);
 Route::delete('clients/{id}', [ClientController::class, 'deletar']);
